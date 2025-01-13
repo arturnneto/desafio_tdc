@@ -1,7 +1,9 @@
 package com.artur.estoqueapi.domain.entities.auth;
 
+import com.artur.estoqueapi.domain.dto.security.LoginRequestDto;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Set;
 import java.util.UUID;
@@ -31,4 +33,8 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<RoleEntity> roles;
+
+    public boolean isLoginCorrect(LoginRequestDto loginRequestDto, PasswordEncoder passwordEncoder) {
+        return passwordEncoder.matches(loginRequestDto.password(), this.password);
+    }
 }
