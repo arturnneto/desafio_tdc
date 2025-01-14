@@ -25,7 +25,7 @@ public class TokenController {
     private UserRepository userRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @PostMapping
+    @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login (@RequestBody LoginRequestDto loginRequestDto) {
         var user = userRepository.findByUsername(loginRequestDto.username());
 
