@@ -38,7 +38,7 @@ public class TokenController {
         Instant now = Instant.now();
         long expiresIn = 300L;
 
-        var scopes = user.get().getRoles()
+        String scopes = user.get().getRoles()
                 .stream()
                 .map(RoleEntity::getRoleName)
                 .collect(Collectors.joining(" "));
