@@ -2,6 +2,7 @@ package com.artur.estoqueapi.controllers.security;
 
 import com.artur.estoqueapi.domain.dto.security.LoginRequestDto;
 import com.artur.estoqueapi.domain.dto.security.LoginResponseDto;
+import com.artur.estoqueapi.domain.entities.auth.RoleEntity;
 import com.artur.estoqueapi.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.apache.catalina.User;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -36,11 +38,17 @@ public class TokenController {
         Instant now = Instant.now();
         long expiresIn = 300L;
 
+        var scopes = user.get().getRoles()
+                .stream()
+                .map(RoleEntity::getRoleName)
+                .collect(Collectors.joining(" "));
+
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("EstoqueAPI")
                 .subject(user.get().getUserId().toString())
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(expiresIn))
+                .claim("scope", scopes)
                 .build();
 
         String jwtValue = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
