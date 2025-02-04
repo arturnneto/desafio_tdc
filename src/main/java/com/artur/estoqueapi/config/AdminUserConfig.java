@@ -4,6 +4,8 @@ import com.artur.estoqueapi.domain.entities.auth.RoleEntity;
 import com.artur.estoqueapi.domain.entities.auth.UserEntity;
 import com.artur.estoqueapi.repositories.RoleRepository;
 import com.artur.estoqueapi.repositories.UserRepository;
+import com.artur.estoqueapi.service.stock.RoleService;
+import com.artur.estoqueapi.service.stock.UserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -25,13 +27,15 @@ public class AdminUserConfig implements CommandLineRunner {
     private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private RoleService roleService;
 
 
     @Override
     @Transactional
     public void run(String... args) throws Exception {
 
-        var adminRole = roleRepository.findByRoleName(RoleEntity.Values.ADMIN.name().toLowerCase());
+        var adminRole = roleService.getAdminRole();
         var adminUser = userRepository.findByUsername("admin");
 
         adminUser.ifPresentOrElse(

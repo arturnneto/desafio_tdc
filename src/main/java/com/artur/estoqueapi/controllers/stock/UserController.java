@@ -5,6 +5,8 @@ import com.artur.estoqueapi.domain.entities.auth.RoleEntity;
 import com.artur.estoqueapi.domain.entities.auth.UserEntity;
 import com.artur.estoqueapi.repositories.RoleRepository;
 import com.artur.estoqueapi.repositories.UserRepository;
+import com.artur.estoqueapi.service.stock.RoleService;
+import com.artur.estoqueapi.service.stock.UserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -31,25 +33,15 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleService roleService;
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private UserService userService;
+
 
     @Transactional
     @PostMapping("/users")
-    public ResponseEntity<Void> createNewUser(@RequestBody UserCreationDto newUserDto) {
-        var userRole = roleRepository.findByRoleName(RoleEntity.Values.BASIC.name().toLowerCase());
-        Optional<UserEntity> userFromDatabase = userRepository.findByUsername(newUserDto.username());
-
-        if (userFromDatabase.isPresent()) {
-            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
-        }
-
-        UserEntity newUser = new UserEntity();
-        newUser.setUsername(newUserDto.username());
-        newUser.setPassword(bCryptPasswordEncoder.encode(newUserDto.password()));
-        newUser.setRoles(Set.of(userRole));
-
+    public ResponseEntity<Void> createNewBasicUser(@RequestBody UserCreationDto newUserDto) {
+        UserEntity newUser = userService.createNewBasicUser(newUserDto);
         userRepository.save(newUser);
 
         return ResponseEntity.ok().build();
