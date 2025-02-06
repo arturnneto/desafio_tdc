@@ -30,9 +30,10 @@ public class TokenController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login (@RequestBody LoginRequestDto loginRequestDto) {
-        Optional<UserEntity> userFromDatabase = userService.getUserEntity(loginRequestDto);
+        Optional<UserEntity> userFromDatabase = userService.getUserLoginEntity(loginRequestDto);
         tokenService.checkUserExistence(userFromDatabase);
         tokenService.checkIfLoginIsCorrect(loginRequestDto, bCryptPasswordEncoder);
+
         String scopes = tokenService.generateTokenScopes(userFromDatabase);
         JwtClaimsSet claims = tokenService.generateJwtClaimsSet(userFromDatabase, ISSUER, tokenExpirationTime, scopes);
         String jwtValue = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
