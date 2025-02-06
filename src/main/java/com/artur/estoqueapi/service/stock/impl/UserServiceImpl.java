@@ -1,7 +1,6 @@
 package com.artur.estoqueapi.service.stock.impl;
 
 import com.artur.estoqueapi.domain.dto.security.LoginRequestDto;
-import com.artur.estoqueapi.domain.dto.stock.UserCreationDto;
 import com.artur.estoqueapi.domain.entities.auth.RoleEntity;
 import com.artur.estoqueapi.domain.entities.auth.UserEntity;
 import com.artur.estoqueapi.repositories.UserRepository;
@@ -29,8 +28,23 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public void checkUserExistence(UserCreationDto newUserDto) {
-        Optional<UserEntity> userFromDatabase = userRepository.findByUsername(newUserDto.username());
+    public Optional<UserEntity> getUserEntity(UserEntity userEntity) {
+        return userRepository.findByUsername(userEntity.getUsername());
+    }
+
+    @Override
+    public Optional<UserEntity> getUserLoginEntity(LoginRequestDto loginRequestDto) {
+        return userRepository.findByUsername(loginRequestDto.username());
+    }
+
+    @Override
+    public UserEntity saveNewUser(UserEntity userEntity) {
+        return userRepository.save(userEntity);
+    }
+
+    @Override
+    public void checkUserExistence(UserEntity userEntity) {
+        Optional<UserEntity> userFromDatabase = getUserEntity(userEntity);
 
         if (userFromDatabase.isPresent()) {
             throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
@@ -38,20 +52,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity createNewBasicUser(UserCreationDto newUserDto) {
-        checkUserExistence(newUserDto);
+    public UserEntity createNewBasicUser(UserEntity newUserEntity) {
+        checkUserExistence(newUserEntity);
         RoleEntity basicUserRole = roleService.getBasicRole();
 
         UserEntity newUser = new UserEntity();
-        newUser.setUsername(newUserDto.username());
-        newUser.setPassword(bCryptPasswordEncoder.encode(newUserDto.password()));
+        newUser.setUsername(newUserEntity.getUsername());
+        newUser.setPassword(bCryptPasswordEncoder.encode(newUserEntity.getPassword()));
         newUser.setRoles(Set.of(basicUserRole));
 
         return newUser;
-    }
-
-    @Override
-    public Optional<UserEntity> getUserEntity(LoginRequestDto loginRequestDto) {
-        return userRepository.findByUsername(loginRequestDto.username());
     }
 }
