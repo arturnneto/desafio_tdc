@@ -33,7 +33,6 @@ public class TokenController {
         Optional<UserEntity> userFromDatabase = userService.getUserLoginEntity(loginRequestDto);
         tokenService.checkUserExistence(userFromDatabase);
         tokenService.checkIfLoginIsCorrect(loginRequestDto, bCryptPasswordEncoder);
-
         String scopes = tokenService.generateTokenScopes(userFromDatabase);
         JwtClaimsSet claims = tokenService.generateJwtClaimsSet(userFromDatabase, ISSUER, tokenExpirationTime, scopes);
         String jwtValue = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
