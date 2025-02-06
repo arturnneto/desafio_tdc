@@ -1,4 +1,4 @@
-package com.artur.estoqueapi.config;
+package com.artur.estoqueapi.config.security;
 
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;

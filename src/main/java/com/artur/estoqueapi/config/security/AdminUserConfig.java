@@ -1,4 +1,4 @@
-package com.artur.estoqueapi.config;
+package com.artur.estoqueapi.config.security;
 
 import com.artur.estoqueapi.domain.entities.auth.RoleEntity;
 import com.artur.estoqueapi.domain.entities.auth.UserEntity;
