@@ -31,7 +31,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public void checkIfLoginIsCorrect(LoginRequestDto loginRequestDto, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        Optional<UserEntity> userFromDatabase = userService.getUserEntity(loginRequestDto);
+        Optional<UserEntity> userFromDatabase = userService.getUserLoginEntity(loginRequestDto);
 
         if (!userFromDatabase.get().isLoginCorrect(loginRequestDto, bCryptPasswordEncoder)) {
             throw new BadCredentialsException("User or password is not valid.");
