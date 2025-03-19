@@ -11,8 +11,8 @@
 	<groupId>com.artur</groupId>
 	<artifactId>estoqueapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>estoqueapi</name>
-	<description>API gerenciadora de estoque</description>
+	<name>callforpapers</name>
+	<description>API Call for Papers</description>
 	<url/>
 	<licenses>
 		<license/>
