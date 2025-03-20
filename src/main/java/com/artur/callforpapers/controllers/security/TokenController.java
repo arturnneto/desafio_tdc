@@ -4,7 +4,7 @@ import com.artur.callforpapers.domain.dto.security.LoginRequestDto;
 import com.artur.callforpapers.domain.dto.security.LoginResponseDto;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import com.artur.callforpapers.service.security.TokenService;
-import com.artur.callforpapers.service.stock.UserService;
+import com.artur.callforpapers.service.papers.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,7 +25,7 @@ public class TokenController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private TokenService tokenService;
     private UserService userService;
-    private static final String ISSUER = "EstoqueAPI";
+    private static final String ISSUER = "CallForPapers";
     private static final Long tokenExpirationTime = 300L;
 
     @PostMapping("/login")

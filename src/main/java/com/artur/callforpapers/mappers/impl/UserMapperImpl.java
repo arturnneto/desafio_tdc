@@ -1,6 +1,6 @@
 package com.artur.callforpapers.mappers.impl;
 
-import com.artur.callforpapers.domain.dto.stock.UserDto;
+import com.artur.callforpapers.domain.dto.papers.UserDto;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import com.artur.callforpapers.mappers.Mapper;
 import org.modelmapper.ModelMapper;

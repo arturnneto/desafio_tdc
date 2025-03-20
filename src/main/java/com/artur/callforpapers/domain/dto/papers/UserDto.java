@@ -1,4 +1,4 @@
-package com.artur.callforpapers.domain.dto.stock;
+package com.artur.callforpapers.domain.dto.papers;
 
 import lombok.*;
 

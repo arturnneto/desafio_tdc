@@ -1,10 +1,10 @@
-package com.artur.callforpapers.controllers.stock;
+package com.artur.callforpapers.controllers.papers;
 
-import com.artur.callforpapers.domain.dto.stock.UserDto;
+import com.artur.callforpapers.domain.dto.papers.UserDto;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import com.artur.callforpapers.mappers.Mapper;
 import com.artur.callforpapers.repositories.UserRepository;
-import com.artur.callforpapers.service.stock.UserService;
+import com.artur.callforpapers.service.papers.UserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

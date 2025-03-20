@@ -4,7 +4,7 @@ import com.artur.callforpapers.domain.dto.security.LoginRequestDto;
 import com.artur.callforpapers.domain.entities.auth.RoleEntity;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import com.artur.callforpapers.service.security.TokenService;
-import com.artur.callforpapers.service.stock.UserService;
+import com.artur.callforpapers.service.papers.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

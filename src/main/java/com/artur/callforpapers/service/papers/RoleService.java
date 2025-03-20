@@ -1,4 +1,4 @@
-package com.artur.callforpapers.service.stock;
+package com.artur.callforpapers.service.papers;
 
 import com.artur.callforpapers.domain.entities.auth.RoleEntity;
 

@@ -1,11 +1,11 @@
-package com.artur.callforpapers.service.stock.impl;
+package com.artur.callforpapers.service.papers.impl;
 
 import com.artur.callforpapers.domain.dto.security.LoginRequestDto;
 import com.artur.callforpapers.domain.entities.auth.RoleEntity;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import com.artur.callforpapers.repositories.UserRepository;
-import com.artur.callforpapers.service.stock.RoleService;
-import com.artur.callforpapers.service.stock.UserService;
+import com.artur.callforpapers.service.papers.RoleService;
+import com.artur.callforpapers.service.papers.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
