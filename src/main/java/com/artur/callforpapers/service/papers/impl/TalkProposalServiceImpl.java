@@ -26,6 +26,11 @@ public class TalkProposalServiceImpl implements TalkProposalService {
     }
 
     @Override
+    public Optional<TalkProposalEntity> getTalkProposal(Long id) {
+        return talkProposalRepository.findById(id);
+    }
+
+    @Override
     public TalkProposalEntity saveNewTalkProposal(TalkProposalEntity talkProposalEntity) {
         return talkProposalRepository.save(talkProposalEntity);
     }
@@ -36,6 +41,15 @@ public class TalkProposalServiceImpl implements TalkProposalService {
 
         if (talkProposalFromDatabase.isPresent()) {
             throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Proposal" + " " + talkProposalEntity.getTitle() + "Already exists on database.");
+        }
+    }
+
+    @Override
+    public void checkIfTalkProposalExists(Long id) {
+        Optional<TalkProposalEntity> talkProposalFromDatabase = getTalkProposal(id);
+
+        if (talkProposalFromDatabase.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Proposal not found on database.");
         }
     }
 
@@ -55,5 +69,18 @@ public class TalkProposalServiceImpl implements TalkProposalService {
     @Override
     public void deleteTalkProposal(Long id) {
         talkProposalRepository.deleteById(id);
+    }
+
+    @Override
+    public TalkProposalEntity updateTalkProposal(Long id, TalkProposalEntity talkProposalEntity) {
+        talkProposalEntity.setId(id);
+
+        return getTalkProposal(id).map(existingTalkProposal -> {
+            Optional.ofNullable(talkProposalEntity.getTitle()).ifPresent(existingTalkProposal::setTitle);
+            Optional.ofNullable(talkProposalEntity.getResume()).ifPresent(existingTalkProposal::setResume);
+            Optional.ofNullable(talkProposalEntity.getAuthorName()).ifPresent(existingTalkProposal::setAuthorName);
+            Optional.ofNullable(talkProposalEntity.getAuthorEmail()).ifPresent(existingTalkProposal::setAuthorEmail);
+            return talkProposalRepository.save(existingTalkProposal);
+        }).orElseThrow(() -> new RuntimeException("Talk proposal does not exists."));
     }
 }

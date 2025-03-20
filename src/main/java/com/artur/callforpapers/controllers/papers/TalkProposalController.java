@@ -42,4 +42,15 @@ public class TalkProposalController {
         talkProposalService.deleteTalkProposal(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+
+    @Transactional
+    @PutMapping("/talk-proposal/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_admin')")
+    public ResponseEntity<TalkProposalDto> updateTalkProposal(@PathVariable("id") Long id, @RequestBody TalkProposalDto talkProposalDto) {
+        talkProposalService.checkIfTalkProposalExists(id);
+        TalkProposalEntity talkProposalFromDatabase = talkProposalMapper.mapFrom(talkProposalDto);
+        TalkProposalEntity updatedTalkProposal = talkProposalService.updateTalkProposal(id, talkProposalFromDatabase);
+
+        return new ResponseEntity<>(talkProposalMapper.mapTo(updatedTalkProposal), HttpStatus.OK);
+    }
 }
