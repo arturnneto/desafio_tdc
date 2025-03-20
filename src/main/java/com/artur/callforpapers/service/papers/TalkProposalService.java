@@ -13,4 +13,6 @@ public interface TalkProposalService {
     TalkProposalEntity saveNewTalkProposal(TalkProposalEntity talkProposalEntity);
 
     Optional<TalkProposalEntity> getTalkProposal(TalkProposalEntity talkProposalEntity);
+
+    void deleteTalkProposal(Long id);
 }

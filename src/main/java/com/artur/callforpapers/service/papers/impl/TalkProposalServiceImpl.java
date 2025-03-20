@@ -45,7 +45,15 @@ public class TalkProposalServiceImpl implements TalkProposalService {
 
         TalkProposalEntity newTalkProposal = new TalkProposalEntity();
         newTalkProposal.setTitle(talkProposalEntity.getTitle());
+        newTalkProposal.setResume(talkProposalEntity.getResume());
+        newTalkProposal.setAuthorName(talkProposalEntity.getAuthorName());
+        newTalkProposal.setAuthorEmail(talkProposalEntity.getAuthorEmail());
 
         return newTalkProposal;
+    }
+
+    @Override
+    public void deleteTalkProposal(Long id) {
+        talkProposalRepository.deleteById(id);
     }
 }

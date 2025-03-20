@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface TalkProposalRepository extends JpaRepository<TalkProposalEntity, Long> {
     Optional<TalkProposalEntity> findByTitle(String title);
+
+    void deleteById(Long id);
 }
