@@ -10,7 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @AllArgsConstructor
@@ -82,5 +86,10 @@ public class TalkProposalServiceImpl implements TalkProposalService {
             Optional.ofNullable(talkProposalEntity.getAuthorEmail()).ifPresent(existingTalkProposal::setAuthorEmail);
             return talkProposalRepository.save(existingTalkProposal);
         }).orElseThrow(() -> new RuntimeException("Talk proposal does not exists."));
+    }
+
+    @Override
+    public List<TalkProposalEntity> getAllTalkProposals() {
+        return new ArrayList<>(talkProposalRepository.findAll());
     }
 }

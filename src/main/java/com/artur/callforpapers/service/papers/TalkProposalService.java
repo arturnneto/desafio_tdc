@@ -2,6 +2,7 @@ package com.artur.callforpapers.service.papers;
 
 import com.artur.callforpapers.domain.entities.papers.TalkProposalEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface TalkProposalService {
@@ -21,4 +22,6 @@ public interface TalkProposalService {
     TalkProposalEntity updateTalkProposal(Long id, TalkProposalEntity talkProposalEntity);
 
     void deleteTalkProposal(Long id);
+
+    List<TalkProposalEntity> getAllTalkProposals();
 }

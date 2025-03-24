@@ -13,6 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
@@ -52,5 +56,20 @@ public class TalkProposalController {
         TalkProposalEntity updatedTalkProposal = talkProposalService.updateTalkProposal(id, talkProposalFromDatabase);
 
         return new ResponseEntity<>(talkProposalMapper.mapTo(updatedTalkProposal), HttpStatus.OK);
+    }
+
+    @Transactional
+    @GetMapping("/talk-proposal/{id}")
+    public ResponseEntity<TalkProposalDto> getTalkProposal(@PathVariable("id") Long id) {
+        talkProposalService.checkIfTalkProposalExists(id);
+        Optional<TalkProposalEntity> proposalFromDatabase = talkProposalService.getTalkProposal(id);
+        return new ResponseEntity<>(talkProposalMapper.mapTo(proposalFromDatabase.get()), HttpStatus.OK);
+    }
+
+    @Transactional
+    @GetMapping("/talk-proposal")
+    public ResponseEntity<List<TalkProposalDto>> getAllTalkProposals() {
+        List<TalkProposalEntity> allTalkProposals = talkProposalService.getAllTalkProposals();
+        return new ResponseEntity<>(allTalkProposals.stream().map(talkProposalMapper::mapTo).collect(Collectors.toList()), HttpStatus.OK);
     }
 }
