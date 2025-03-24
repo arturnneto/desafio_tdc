@@ -32,4 +32,4 @@ jobs:
         openssl genrsa -out src/main/resources/app.key 2048
         openssl rsa -in src/main/resources/app.key -pubout -out src/main/resources/app.pub
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml -Djwt.private.key=classpath:app.key -Djwt.public.key=classpath:app.pub
