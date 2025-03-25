@@ -2,16 +2,23 @@ package com.artur.callforpapers;
 
 import com.artur.callforpapers.domain.dto.papers.TalkProposalDto;
 import com.artur.callforpapers.domain.entities.papers.TalkProposalEntity;
+import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-public final class TestsSupportClasses {
+@DirtiesContext
+@ActiveProfiles("test")
+public final class TestUtils {
 
-    private TestsSupportClasses() {
+    private TestUtils() {
 
     }
 
     public static TalkProposalEntity createTalkProposal() {
         return TalkProposalEntity.builder()
-                .id(1L)
                 .title("Titulo A")
                 .resume("Resumo A")
                 .authorName("Nome A")
@@ -21,7 +28,6 @@ public final class TestsSupportClasses {
 
     public static TalkProposalEntity createTalkProposalB() {
         return TalkProposalEntity.builder()
-                .id(2L)
                 .title("Titulo B")
                 .resume("Resumo B")
                 .authorName("Nome B")
@@ -31,7 +37,6 @@ public final class TestsSupportClasses {
 
     public static TalkProposalEntity createTalkProposalC() {
         return TalkProposalEntity.builder()
-                .id(3L)
                 .title("Titulo C")
                 .resume("Resumo C")
                 .authorName("Nome C")
@@ -58,12 +63,26 @@ public final class TestsSupportClasses {
                 .build();
     }
 
-//    public static TalkProposalDto createTalkProposalDto() {
-//        return TalkProposalDto.builder()
-//                .id(1L)
-//                .title("Titulo E")
-//                .authorName("Nome E")
-//                .authorEmail("Email E")
-//                .build();
-//    }
+    public static TalkProposalDto createTalkProposalDto(String title, String resume, String authorName, String authorEmail) {
+        TalkProposalDto testTalkProposal = new TalkProposalDto();
+        testTalkProposal.setTitle(title);
+        testTalkProposal.setResume(resume);
+        testTalkProposal.setAuthorName(authorName);
+        testTalkProposal.setAuthorEmail(authorEmail);
+
+        return testTalkProposal;
+    }
+
+    public static String generateToken(MockMvc mockMvc) throws Exception {
+        String body = "{\n    \"username\": \"admin\",\n    \"password\": \"123\"\n}";
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/login")
+                        .content(body)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        String response = result.getResponse().getContentAsString();
+        String token = response.substring(response.indexOf(":\"") + 2, response.indexOf("\","));
+        return token;
+    }
 }
