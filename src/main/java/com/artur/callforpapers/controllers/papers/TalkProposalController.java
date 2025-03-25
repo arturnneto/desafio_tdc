@@ -61,6 +61,7 @@ public class TalkProposalController {
 
     @Transactional
     @GetMapping("/talk-proposal/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_admin') or hasAuthority('SCOPE_basic')")
     public ResponseEntity<TalkProposalDto> getTalkProposal(@PathVariable("id") Long id) {
         talkProposalService.checkIfTalkProposalExistsWithId(id);
         Optional<TalkProposalEntity> proposalFromDatabase = talkProposalService.getTalkProposal(id);
@@ -69,6 +70,7 @@ public class TalkProposalController {
 
     @Transactional
     @GetMapping("/talk-proposal")
+    @PreAuthorize("hasAuthority('SCOPE_admin') or hasAuthority('SCOPE_basic')")
     public ResponseEntity<List<TalkProposalDto>> getAllTalkProposals() {
         List<TalkProposalEntity> allTalkProposals = talkProposalService.getAllTalkProposals();
         return new ResponseEntity<>(allTalkProposals.stream().map(talkProposalMapper::mapTo).collect(Collectors.toList()), HttpStatus.OK);
