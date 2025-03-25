@@ -57,5 +57,5 @@ jobs:
         SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/callforpapers
         SPRING_DATASOURCE_USERNAME: postgres1
         SPRING_DATASOURCE_PASSWORD: admin1
-        SPRING_JPA_HIBERNATE_DDL_AUTO: update
+        SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
         SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
