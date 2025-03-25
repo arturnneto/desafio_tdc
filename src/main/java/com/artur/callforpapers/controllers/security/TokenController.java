@@ -6,11 +6,13 @@ import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import com.artur.callforpapers.service.security.TokenService;
 import com.artur.callforpapers.service.papers.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,11 +21,16 @@ import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin
 public class TokenController {
 
+    @Autowired
     private JwtEncoder jwtEncoder;
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
     private TokenService tokenService;
+    @Autowired
     private UserService userService;
     private static final String ISSUER = "CallForPapers";
     private static final Long tokenExpirationTime = 300L;
