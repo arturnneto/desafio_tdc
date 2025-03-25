@@ -13,6 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "users")
 public class UserEntity {
 
@@ -37,8 +38,4 @@ public class UserEntity {
     public boolean isLoginCorrect(LoginRequestDto loginRequestDto, PasswordEncoder passwordEncoder) {
         return passwordEncoder.matches(loginRequestDto.password(), this.password);
     }
-
-//    public String getUsername() {
-//        return this.username;
-//    }
 }
