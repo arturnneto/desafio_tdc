@@ -43,15 +43,16 @@ public class TalkProposalController {
     @DeleteMapping("/talk-proposal/{id}")
     @PreAuthorize("hasAuthority('SCOPE_admin')")
     public ResponseEntity deleteTalkProposal(@PathVariable("id") Long id) {
+        talkProposalService.checkIfTalkProposalExistsWithId(id);
         talkProposalService.deleteTalkProposal(id);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @Transactional
     @PutMapping("/talk-proposal/{id}")
     @PreAuthorize("hasAuthority('SCOPE_admin')")
     public ResponseEntity<TalkProposalDto> updateTalkProposal(@PathVariable("id") Long id, @RequestBody TalkProposalDto talkProposalDto) {
-        talkProposalService.checkIfTalkProposalExists(id);
+        talkProposalService.checkIfTalkProposalExistsWithId(id);
         TalkProposalEntity talkProposalFromDatabase = talkProposalMapper.mapFrom(talkProposalDto);
         TalkProposalEntity updatedTalkProposal = talkProposalService.updateTalkProposal(id, talkProposalFromDatabase);
 
@@ -61,7 +62,7 @@ public class TalkProposalController {
     @Transactional
     @GetMapping("/talk-proposal/{id}")
     public ResponseEntity<TalkProposalDto> getTalkProposal(@PathVariable("id") Long id) {
-        talkProposalService.checkIfTalkProposalExists(id);
+        talkProposalService.checkIfTalkProposalExistsWithId(id);
         Optional<TalkProposalEntity> proposalFromDatabase = talkProposalService.getTalkProposal(id);
         return new ResponseEntity<>(talkProposalMapper.mapTo(proposalFromDatabase.get()), HttpStatus.OK);
     }

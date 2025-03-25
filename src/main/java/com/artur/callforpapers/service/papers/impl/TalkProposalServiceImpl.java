@@ -49,11 +49,11 @@ public class TalkProposalServiceImpl implements TalkProposalService {
     }
 
     @Override
-    public void checkIfTalkProposalExists(Long id) {
+    public void checkIfTalkProposalExistsWithId(Long id) {
         Optional<TalkProposalEntity> talkProposalFromDatabase = getTalkProposal(id);
 
         if (talkProposalFromDatabase.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Proposal not found on database.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Proposal not found on database.");
         }
     }
 

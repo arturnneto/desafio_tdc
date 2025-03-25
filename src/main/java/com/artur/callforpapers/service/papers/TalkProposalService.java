@@ -9,7 +9,7 @@ public interface TalkProposalService {
 
     void checkIfTalkProposalExists(TalkProposalEntity talkProposalEntity);
 
-    void checkIfTalkProposalExists(Long id);
+    void checkIfTalkProposalExistsWithId(Long id);
 
     TalkProposalEntity createNewTalkProposal(TalkProposalEntity talkProposalEntity);
 
