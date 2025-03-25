@@ -1,8 +1,10 @@
 package com.artur.callforpapers;
 
 import com.artur.callforpapers.domain.dto.papers.TalkProposalDto;
+import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import com.artur.callforpapers.domain.entities.papers.TalkProposalEntity;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -44,22 +46,24 @@ public final class TestUtils {
                 .build();
     }
 
-    public static TalkProposalEntity createTalkProposalD() {
-        return TalkProposalEntity.builder()
-                .id(4L)
-                .title("Titulo D")
-                .resume("Resumo D")
-                .authorName("Nome D")
-                .authorEmail("Email D")
+    public static UserEntity createUserEntity() {
+        return UserEntity.builder()
+                .username("Username")
+                .password("Password")
                 .build();
     }
 
-    public static TalkProposalEntity createTalkProposalE() {
-        return TalkProposalEntity.builder()
-                .id(5L)
-                .title("Titulo E")
-                .authorName("Nome E")
-                .authorEmail("Email E")
+    public static UserEntity createUserEntityB() {
+        return UserEntity.builder()
+                .username("Username B")
+                .password("Password B")
+                .build();
+    }
+
+    public static UserEntity createUserEntityC() {
+        return UserEntity.builder()
+                .username("Username C")
+                .password("Password C")
                 .build();
     }
 

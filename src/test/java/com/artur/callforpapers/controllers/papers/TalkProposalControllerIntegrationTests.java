@@ -1,4 +1,4 @@
-package com.artur.callforpapers.controllers;
+package com.artur.callforpapers.controllers.papers;
 
 import com.artur.callforpapers.TestUtils;
 import com.artur.callforpapers.domain.dto.papers.TalkProposalDto;
