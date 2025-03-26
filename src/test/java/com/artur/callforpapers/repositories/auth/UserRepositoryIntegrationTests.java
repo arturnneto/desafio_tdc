@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "com.artur.callforpapers.repositories")
 public class UserRepositoryIntegrationTests {
 
     private UserRepository userRepository;
