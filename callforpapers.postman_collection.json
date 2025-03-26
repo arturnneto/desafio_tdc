@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "dee9a32f-27f4-4e1b-89e6-e8a10ba42796",
+		"name": "callforpapers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32868293"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"artur\",\r\n    \"password\": \"teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJFc3RvcXVlQVBJIiwic3ViIjoiNTNiYTU1MGYtM2JhOC00Yjg1LTg5NTctNzAyN2FhOGU3MzM0IiwiZXhwIjoxNzM4ODcxMjYzLCJpYXQiOjE3Mzg4NzA5NjMsInNjb3BlIjoiYWRtaW4ifQ.sPVlNqyh9myEgooLEEAnemvX9TLThJBpW2QvJAa9YPYkUpHzPBq7xepVI194Cqcl9VQ7DAn9TsQy8wXlBMIM3oxbvVDRZFqXz9YLLDahHa6vEIMGeR9HfukkvX8ik8XH0cQPevOJqBLvq28wH1NOUeD9HskBH6KhcWA5FT7fZ-1Kx1VYEuPvmjs0dIycRywlBkzGwXid86Na_A-B1y2PXEejHzH1RWRQZS5Zmwz9EMHbW_rqLEbBkWASkamn7YNg37zKH9SEQD3KCIljXPjkPQXb7jY17Bw3TnZr3lvzdtdN7NuwxpjaIuymDKIotg9YeaHT-ECLjJxDHqo4TItSKg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"artur\",\r\n    \"password\": \"teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create talk",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYWxsRm9yUGFwZXJzIiwic3ViIjoiNTAzOWU2NDMtZGM1NC00OTIwLWI5YjEtMjBhYTg3YmJlNDFkIiwiZXhwIjoxNzQyOTA4OTc5LCJpYXQiOjE3NDI5MDg2NzksInNjb3BlIjoiYWRtaW4ifQ.iRt887VlvwPGUVS1L6TbFomQjzlkOqzaMUMVehaLTNaFj7FYGtZ9j50u3L-5UJHLMdh0eqL4tpDXCkLYeXmQIcyL3uoTgl5yhb7KauXxqOi_gBFUlOEqCrI4kTYKpNhxfsqJbg8uTSYXDzTveSTQg9xbo8P-3x5dYXLNJUD4hHUlSfP5EVAFsFbVfAwM9w_9P_k-mFMXoqkxUm6PtP63XE-zdaweQ1pIJyIVzY57YjOnt_gP8kjhkNmpUMVN_GayqH4tGQDG3yF21KwS_Oxx-uO7iofeGWyEcdR6hAUCvG6VJfvL3_eLiV0fylMPy6H7rD5JOegWtP6lIJ2KirbxgQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"testeee\",\r\n    \"resume\": \"aaaaa\",\r\n    \"authorName\": \"aaaaaa\",\r\n    \"authorEmail\": \"arturupdaaaaated@email.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/talk-proposal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"talk-proposal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete talk",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYWxsRm9yUGFwZXJzIiwic3ViIjoiNTAzOWU2NDMtZGM1NC00OTIwLWI5YjEtMjBhYTg3YmJlNDFkIiwiZXhwIjoxNzQyNDk1OTk0LCJpYXQiOjE3NDI0OTU2OTQsInNjb3BlIjoiYWRtaW4ifQ.adgkiuwUcWwuvXtbY9-CqmKy4zU2Twexr5zQb-SUqPmV1-cMK_E2qjmH99y5wor9Abza2EEhtmyILJz7VrRaeV7PkgYVoc6e8KmxdVFeZef5wDqyfv1EVqc3F1N5QwphsSDHKgagIwo9o7oNS_298NNEwORBUZcKVnSyNC3SNTi_mxaOdsGoswZ8ZeKr8XCnCrglBpj6vtTjyxgWp88o_U0WcPJPP-pAApdJsy2JUcaXL3CBH5gHjrm8Dy9q6j-q3kdXuqpcxEmNDRRsTq5qm2kt3pJwg2Bbr60COpm0Oy-seYlbFG7lQEmoyl45Iwa__z-vJnLGqHOYc5q1ZNGnbA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/talk-proposal/52",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"talk-proposal",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update talk",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYWxsRm9yUGFwZXJzIiwic3ViIjoiNTAzOWU2NDMtZGM1NC00OTIwLWI5YjEtMjBhYTg3YmJlNDFkIiwiZXhwIjoxNzQyODI5MTM2LCJpYXQiOjE3NDI4Mjg4MzYsInNjb3BlIjoiYWRtaW4ifQ.GBNyi6TpykwvZTRKG7lD3TCjoX5wgFwtkBlLIGI1tm4Ma8_FkHSgfKfVGNJ59ljzASkiVGMg2pnNji1Lx8satALWjRAUlu9niM8YK-FK-IhUqn01Kg6kQsgpgOQYwNN74JOJBFDNH83q9_V_pJJaSHGN-LlNcYX9U2xHi24Cl7MMz5IYAzvqqDf0h5zohLMM3e2EGVzOiWM9PNp--3r5x3gadXGeuIPGbDwIIFUZ5YIpDk5J4sGSCUdSsyUJYdJ7HR5Tl0meTeFUxRgcTrG1qRd_mUQBy__qdA6w7RDReWJAQH3qz3pG9_h8vGsGNc53Q4A2wHJ_SCCdlVVitDEvhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"atualizando novamente\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/talk-proposal/102",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"talk-proposal",
+						"102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get one",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYWxsRm9yUGFwZXJzIiwic3ViIjoiNTAzOWU2NDMtZGM1NC00OTIwLWI5YjEtMjBhYTg3YmJlNDFkIiwiZXhwIjoxNzQyOTA5NzE0LCJpYXQiOjE3NDI5MDk0MTQsInNjb3BlIjoiYWRtaW4ifQ.ZwFl3xEAjDeJ5zONtlFVB8ZdfwlyHByqbT_h8WULoAu-r3KVWnrVYbAYfnyReVZEe4icTMCB2tkdnV45YC3Ji-zzTJ5C1tXLJdz2d1eAIOguR1LwjytClYxURG-WzGRZUJcHGOzfOatL2qhDZ8_iXfJ5uLJL4EY7gt3GYgDsiG0HY2goL7w0GCzUnWVkBS3Gtme5yZ6j7x686q4nE4CuCsxmBWkeuZ6dFBBAonpGCPc4pmkGba4OIZVpMsd_6GGTw0OQQce9_OSGnUpkS66F0Zv6sPfkaZJx8-DHU082wWZRfOMjjEdA0N0OiVIGofrhM0XoQy0q8_r9pFp8RQG1_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/talk-proposal/352",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"talk-proposal",
+						"352"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYWxsRm9yUGFwZXJzIiwic3ViIjoiNTAzOWU2NDMtZGM1NC00OTIwLWI5YjEtMjBhYTg3YmJlNDFkIiwiZXhwIjoxNzQyODI5MTM2LCJpYXQiOjE3NDI4Mjg4MzYsInNjb3BlIjoiYWRtaW4ifQ.GBNyi6TpykwvZTRKG7lD3TCjoX5wgFwtkBlLIGI1tm4Ma8_FkHSgfKfVGNJ59ljzASkiVGMg2pnNji1Lx8satALWjRAUlu9niM8YK-FK-IhUqn01Kg6kQsgpgOQYwNN74JOJBFDNH83q9_V_pJJaSHGN-LlNcYX9U2xHi24Cl7MMz5IYAzvqqDf0h5zohLMM3e2EGVzOiWM9PNp--3r5x3gadXGeuIPGbDwIIFUZ5YIpDk5J4sGSCUdSsyUJYdJ7HR5Tl0meTeFUxRgcTrG1qRd_mUQBy__qdA6w7RDReWJAQH3qz3pG9_h8vGsGNc53Q4A2wHJ_SCCdlVVitDEvhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/talk-proposal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"talk-proposal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
