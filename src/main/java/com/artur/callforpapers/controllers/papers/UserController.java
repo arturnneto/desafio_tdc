@@ -3,7 +3,7 @@ package com.artur.callforpapers.controllers.papers;
 import com.artur.callforpapers.domain.dto.papers.UserDto;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import com.artur.callforpapers.mappers.Mapper;
-import com.artur.callforpapers.repositories.UserRepository;
+import com.artur.callforpapers.repositories.auth.UserRepository;
 import com.artur.callforpapers.service.papers.UserService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

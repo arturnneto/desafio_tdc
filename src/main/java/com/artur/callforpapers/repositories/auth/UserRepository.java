@@ -1,4 +1,4 @@
-package com.artur.callforpapers.repositories;
+package com.artur.callforpapers.repositories.auth;
 
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

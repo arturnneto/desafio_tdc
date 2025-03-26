@@ -1,7 +1,7 @@
 package com.artur.callforpapers.service.papers.impl;
 
 import com.artur.callforpapers.domain.entities.papers.TalkProposalEntity;
-import com.artur.callforpapers.repositories.TalkProposalRepository;
+import com.artur.callforpapers.repositories.papers.TalkProposalRepository;
 import com.artur.callforpapers.service.papers.TalkProposalService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -13,8 +13,6 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @AllArgsConstructor

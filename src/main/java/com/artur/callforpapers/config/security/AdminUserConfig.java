@@ -1,8 +1,8 @@
 package com.artur.callforpapers.config.security;
 
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
-import com.artur.callforpapers.repositories.RoleRepository;
-import com.artur.callforpapers.repositories.UserRepository;
+import com.artur.callforpapers.repositories.auth.RoleRepository;
+import com.artur.callforpapers.repositories.auth.UserRepository;
 import com.artur.callforpapers.service.papers.RoleService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

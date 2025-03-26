@@ -1,7 +1,7 @@
 package com.artur.callforpapers.service.papers.impl;
 
 import com.artur.callforpapers.domain.entities.auth.RoleEntity;
-import com.artur.callforpapers.repositories.RoleRepository;
+import com.artur.callforpapers.repositories.auth.RoleRepository;
 import com.artur.callforpapers.service.papers.RoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

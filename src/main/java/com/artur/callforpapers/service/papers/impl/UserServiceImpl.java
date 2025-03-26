@@ -3,7 +3,7 @@ package com.artur.callforpapers.service.papers.impl;
 import com.artur.callforpapers.domain.dto.security.LoginRequestDto;
 import com.artur.callforpapers.domain.entities.auth.RoleEntity;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
-import com.artur.callforpapers.repositories.UserRepository;
+import com.artur.callforpapers.repositories.auth.UserRepository;
 import com.artur.callforpapers.service.papers.RoleService;
 import com.artur.callforpapers.service.papers.UserService;
 import lombok.AllArgsConstructor;

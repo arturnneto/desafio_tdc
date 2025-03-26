@@ -1,4 +1,4 @@
-package com.artur.callforpapers.repositories;
+package com.artur.callforpapers.repositories.papers;
 
 import com.artur.callforpapers.domain.entities.papers.TalkProposalEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
