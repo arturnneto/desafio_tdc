@@ -1,11 +1,7 @@
 package com.artur.callforpapers.controllers.auth;
 
-import com.artur.callforpapers.TestUtils;
-import com.artur.callforpapers.domain.dto.papers.TalkProposalDto;
 import com.artur.callforpapers.domain.dto.security.LoginRequestDto;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
-import com.artur.callforpapers.domain.entities.papers.TalkProposalEntity;
-import com.artur.callforpapers.service.papers.TalkProposalService;
 import com.artur.callforpapers.service.papers.UserService;
 import com.artur.callforpapers.service.security.TokenService;
 import com.fasterxml.jackson.databind.ObjectMapper;

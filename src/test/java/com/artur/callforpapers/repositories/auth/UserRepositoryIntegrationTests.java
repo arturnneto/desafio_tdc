@@ -2,11 +2,11 @@ package com.artur.callforpapers.repositories.auth;
 
 import com.artur.callforpapers.TestUtils;
 import com.artur.callforpapers.domain.entities.auth.UserEntity;
-import com.artur.callforpapers.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -19,6 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
+@ComponentScan(basePackages = "com.artur.callforpapers.repositories.auth")
 public class UserRepositoryIntegrationTests {
 
     private UserRepository userRepository;
