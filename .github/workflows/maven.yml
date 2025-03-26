@@ -52,7 +52,7 @@ jobs:
         PGPASSWORD: admin1
 
     - name: Build with Maven using application-ci.properties
-      run: mvn -B package --file pom.xml -Dspring.config.location=classpath:application-ci.properties -Djwt.private.key=classpath:app.key -Djwt.public.key=classpath:app.pub
+      run: mvn -B clean package --file pom.xml -Dspring.config.location=classpath:application-ci.properties -Djwt.private.key=classpath:app.key -Djwt.public.key=classpath:app.pub
       env:
         SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/callforpapers
         SPRING_DATASOURCE_USERNAME: postgres1
