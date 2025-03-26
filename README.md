@@ -31,6 +31,7 @@ Para utilizar este projeto na sua máquina local, é necessário:
 Após clonar o projeto, no terminal de comandos da sua IDE execute o comando `mvn install`, o qual instalará a aplicação em seu computador.
 Após terminar a instalação, execute o projeto normalmente, o qual disponibilizará a API na porta 8080 do localhost do seu computador.
 
+Além disso, é possível utilizar um front-end feito em React.JS disponibilizado no seguinte repositório: `https://github.com/arturnneto/frontend-desafio-tdc`.<br><br>
 Para facilitar os testes da aplicação, foi disponibilizado no repositório o arquivo `callforpapers.postman_collection.json`, o qual ao ser importado no Postman fornece uma configuração rápida para fazer a testagem dos endpoints da API.
 
 ## URLs da API
@@ -120,12 +121,13 @@ Retorna o código de status 201 caso o usuário tenha sido criado com sucesso, e
 #### **Exemplo:**
 
 Request:
-
+```
 POST /users
+```
 
 Response:
 
-```
+```json
 {
     "username": "login",
     "password": "senha"
@@ -145,13 +147,14 @@ Retorna um JSON com as seguintes propriedades:
 
 #### Códigos HTTP:
 
-Retorna o código de status 200 o login tenha ocorrido com sucesso, e o status 401 caso não tenha sido possível encontrar o usuário ou as credenciais não estejam corretas.
+Retorna o código de status 200 caso o login tenha ocorrido com sucesso, e o status 401 caso não tenha sido possível encontrar o usuário ou as credenciais não estejam corretas.
 
 #### **Exemplo:**
 
 Request:
-
+```
 POST /users
+```
 
 Response:
 
@@ -182,8 +185,9 @@ Retorna o código de status 200 caso a palestra tenha sido cadastrada com sucess
 #### **Exemplo:**
 
 Request:
-
+```
 POST /**talk-proposal**
+```
 
 Response:
 
@@ -230,8 +234,9 @@ Retorna o código de status 200 caso tenha sido encontrada a palestra e ela tenh
 #### **Exemplo:**
 
 Request:
-
+```
 PUT /**talk-proposal{id}**
+```
 
 Response:
 
@@ -264,8 +269,9 @@ Retorna o código de status 200 caso tenha sido encontrada a palestra, e o statu
 #### **Exemplo:**
 
 Request:
-
+```
 GET /**talk-proposal{id}**
+```
 
 Response:
 
@@ -298,8 +304,9 @@ Retorna o código de status 200 em caso de sucesso, e o status 401 caso não ten
 #### **Exemplo:**
 
 Request:
-
+```
 GET /**talk-proposal**
+```
 
 Response:
 
