@@ -18,9 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AdminUserConfig implements CommandLineRunner {
-
-    @Autowired
-    private RoleRepository roleRepository;
+    
     @Autowired
     private UserRepository userRepository;
     @Autowired
