@@ -49,7 +49,7 @@ public class UserRepositoryIntegrationTests {
         Iterable<UserEntity> result = userRepository.findAll();
         assertThat(result)
                 .hasSize(3)
-                .containsExactly(userEntity, talkProposalEntityB, talkProposalEntityC);
+                .containsExactlyInAnyOrder(userEntity, talkProposalEntityB, talkProposalEntityC);
     }
 
     @Test

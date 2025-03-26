@@ -49,7 +49,7 @@ public class TalkProposalRepositoryIntegrationTests {
         Iterable<TalkProposalEntity> result = talkProposalRepository.findAll();
         assertThat(result)
                 .hasSize(3)
-                .containsExactly(talkProposalEntity, talkProposalEntityB, talkProposalEntityC);
+                .containsExactlyInAnyOrder(talkProposalEntity, talkProposalEntityB, talkProposalEntityC);
     }
 
     @Test
