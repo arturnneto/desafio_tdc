@@ -45,26 +45,17 @@ jobs:
         openssl genrsa -out src/main/resources/app.key 2048
         openssl rsa -in src/main/resources/app.key -pubout -out src/main/resources/app.pub
 
-    - name: Run Tests (H2)
-      run: mvn test -Dspring.config.location=classpath:application-test.properties
+    - name: Reset Database Before Tests
+      run: |
+        PGPASSWORD=admin1 psql -h localhost -U postgres1 -d callforpapers -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;"
       env:
-        SPRING_PROFILES_ACTIVE: test
-        SPRING_DATASOURCE_URL: jdbc:h2:mem:testdb
-        SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
-        SPRING_DATASOURCE_USERNAME: sa
-        SPRING_DATASOURCE_PASSWORD: ""
-        SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+        PGPASSWORD: admin1
 
-    - name: Validate Database Schema in PostgreSQL
-      run: mvn flyway:migrate -Dspring.config.location=classpath:application-ci.properties
+    - name: Build with Maven using application-ci.properties
+      run: mvn -B package --file pom.xml -Dspring.config.location=classpath:application-ci.properties -Djwt.private.key=classpath:app.key -Djwt.public.key=classpath:app.pub
       env:
-        SPRING_PROFILES_ACTIVE: ci
         SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/callforpapers
         SPRING_DATASOURCE_USERNAME: postgres1
         SPRING_DATASOURCE_PASSWORD: admin1
-        SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+        SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
         SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
-
-    - name: Build Application (Skipping Tests)
-      run: mvn -B package -DskipTests -Dspring.config.location=classpath:application-ci.properties -Djwt.private.key=classpath:app.key -Djwt.public.key=classpath:app.pub
-
