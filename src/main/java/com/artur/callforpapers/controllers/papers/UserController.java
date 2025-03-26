@@ -6,6 +6,7 @@ import com.artur.callforpapers.mappers.Mapper;
 import com.artur.callforpapers.repositories.UserRepository;
 import com.artur.callforpapers.service.papers.UserService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class UserController {
 
     @Transactional
     @PostMapping("/users")
-    public ResponseEntity<UserDto> createNewBasicUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> createNewBasicUser(@Valid @RequestBody UserDto userDto) {
         UserEntity userToBeCreated = userMapper.mapFrom(userDto);
         UserEntity newUser = userService.createNewBasicUser(userToBeCreated);
         userService.saveNewUser(newUser);
